@@ -1,12 +1,15 @@
 import { View, Text, Image } from "react-native"
 import { Entypo, Feather } from "@expo/vector-icons"
 import styles from "./styles"
+import { useNavigation } from "@react-navigation/native"
+
 
 const CoinDetailHeader = (props) => {
   const { image, symbol, marketCapRank } = props
+  const navigation = useNavigation()
   return (
     <View style={styles.headerContainer}>
-      <Entypo name="chevron-left" size={24} color="white" />
+      <Entypo name="chevron-left" size={24} color="white"  onPress={() => navigation.goBack()}/>
       <View style={styles.tickerContainer}>
         <Image source={{ uri: image }} style={{ width: 25, height: 25 }} />
         <Text style={styles.tickerTitle}>{symbol.toUpperCase()}</Text>
