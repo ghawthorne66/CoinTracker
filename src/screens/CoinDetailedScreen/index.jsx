@@ -1,5 +1,5 @@
 import { Dimensions, View, Text, TextInput } from "react-native"
-import { useState } from 'react'
+import { useState, useEffect } from "react"
 import Coin from "../../../assets/data/crypto.json"
 import CoinDetailHeader from "./components/CoinDetailedHeader"
 import { AntDesign } from "@expo/vector-icons"
@@ -25,9 +25,9 @@ const CoinDetailedScreen = () => {
     },
   } = Coin
 
-  const [coinValue, setCoinValue] = useState('1')
+  const [coinValue, setCoinValue] = useState("1")
   const [usdValue, setUsdValue] = useState(current_price.usd.toString())
- 
+
   const percentageColor =
     price_change_percentage_24h < 0 ? "#ea3943" : "#16c784"
 
@@ -45,18 +45,17 @@ const CoinDetailedScreen = () => {
 
   const changeCoinValue = (value) => {
     setCoinValue(value)
-    const floatValue = parseFloat(value) || 0
+    const floatValue = parseFloat(value.replace(',', '.')) || 0
     setUsdValue((floatValue * current_price.usd).toString())
   }
 
+  1
 
   const changeUsdValue = (value) => {
     setUsdValue(value)
-    const floatValue = parseFloat(value) || 0
+    const floatValue = parseFloat(value.replace(',', '.')) || 0
     setCoinValue((floatValue / current_price.usd).toString())
   }
-
-
 
   return (
     <View style={{ paddingHorizontal: 10 }}>
@@ -117,7 +116,7 @@ const CoinDetailedScreen = () => {
               style={styles.input}
               value={coinValue.toString()}
               keyboardType="numeric"
-              onChangeText={changeCoinValue} 
+              onChangeText={changeCoinValue}
             />
           </View>
 
@@ -127,7 +126,7 @@ const CoinDetailedScreen = () => {
               style={styles.input}
               value={usdValue.toString()}
               keyboardType="numeric"
-              onChangeText={changeUsdValue} 
+              onChangeText={changeUsdValue}
             />
           </View>
         </View>
