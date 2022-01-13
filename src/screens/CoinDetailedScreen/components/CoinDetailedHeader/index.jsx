@@ -1,5 +1,5 @@
 import { View, Text, Image } from "react-native"
-import { Entypo, Feather } from "@expo/vector-icons"
+import { Entypo, Feather, FontAwesome } from "@expo/vector-icons"
 import styles from "./styles"
 import { useNavigation } from "@react-navigation/native"
 
@@ -19,7 +19,8 @@ const CoinDetailHeader = (props) => {
           </Text>
         </View>
       </View>
-      <Feather name="user" size={24} color="white" />
+      {/* <Feather name="user" size={24} color="white" /> */}
+      <FontAwesome name="star-o" size={24} color="white" />
     </View>
   )
 }
